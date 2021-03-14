@@ -24,12 +24,12 @@ void loop(){
     if (sensor_cahaya == 1){
         digitalWrite(#pinLED, HIGH);
         lcd.setCursor(0,0);
-        lcd.print("Cahaya Cukup");
+        lcd.print("Cahaya Kurang");
     }
     else {
         digitalWrite(#pinLED, LOW);
         lcd.setCursor(0,0);
-        lcd.print("Cahaya Kurang");
+        lcd.print("Cahaya Cukup");
     }
 
     if (sensor_lembab < 400){
