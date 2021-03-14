@@ -1,5 +1,7 @@
 #include <LiquidCrystal_I2C.h>
 #define sensorLDR A0
+#define sensorsoil A0
+#define relay D1
 
 LiquidCrystal_I2C lcd(//alamat I2C modul, 16, 2);
 
@@ -7,13 +9,15 @@ void setup(){
     Serial.begin(9600);
     lcd.begin(16,2);
     lcd.init();
-
+    pinMode(relay, OUTPUT);
+    
     //nyalakan backlight
     lcd.backlight();
 }
 
 void loop(){
     int sensor_cahaya = analogRead(sensorLDR);
+    int sensor_lembab = analogRead(sensorsoil);
     //Serial.println(sensor_cahaya);
     //Serial.println(sensor_lembab);
 
@@ -23,18 +27,18 @@ void loop(){
         lcd.print("Cahaya Cukup");
     }
     else {
-        digitalWrite(pinLED, HIGH);
+        digitalWrite(#pinLED, HIGH);
         lcd.setCursor(0,0);
         lcd.print("Cahaya Kurang");
     }
 
     if (sensor_lembab < 400){
-        digitalWrite(#pinsensor, HIGH);
+        digitalWrite(#pinrelay, HIGH);
         lcd.setCursor(0,1);
         lcd.print("Kurang Lembab");
     }
     else {
-        digitalWrite(#pinsensor, LOW);
+        digitalWrite(#pinrelay, LOW);
         lcd.setCursor(0,1);
         lcd.print("Cukup Lembab");
     }
