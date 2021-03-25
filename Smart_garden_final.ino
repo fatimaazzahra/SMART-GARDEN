@@ -20,7 +20,6 @@ void setup() {
 
 void loop() {
   int a = (analogRead(kelembaban));
-  int persen = map(a, 0, 1023, 0, 100);
   Serial.print("Sensor Cahaya Sebesar :");
   Serial.println(digitalRead(cahaya));
   Serial.print("Sensor Kelembapan Sebesar :");
@@ -55,7 +54,7 @@ void loop() {
   else {
      lcd.setCursor(0,1);
      lcd.print("Kelembaban : ");
-     lcd.print(persen);
+     lcd.print(a);
      lcd.print("%");
      delay(1000);
      digitalWrite(pump,HIGH);
@@ -64,4 +63,8 @@ void loop() {
   }
     
 }
+  antares.add("Cahaya", cahaya);
+  antares.add("Kelembaban", a);  
+  antares.publish(projectName, deviceName);
+  delay(5000);
 }
