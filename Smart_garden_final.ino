@@ -31,7 +31,6 @@ void setup() {
 void loop() {
   antares.checkMqttConnection();
   int a = (analogRead(kelembaban));
-
   Serial.print("Sensor Cahaya Sebesar :");
   Serial.println(digitalRead(cahaya));
   Serial.print("Sensor Kelembapan Sebesar :");
@@ -42,11 +41,8 @@ void loop() {
      lcd.setCursor(0,0);
      lcd.print("Cukup Cahaya!");
      digitalWrite(lampu,LOW);
-     
-     
-     
-     
   }
+  
   else {
      lcd.setCursor(0,0);
      lcd.print("Kurang Cahaya");
@@ -59,49 +55,25 @@ void loop() {
      lcd.print(a);
      delay(1000);
      digitalWrite(pump,HIGH);
-     
-     
-     
   }
+  
   else {
      lcd.setCursor(0,1);
      lcd.print("Kelembaban: ");
      lcd.print(a);
-
      lcd.print("Kelembaban : ");
      lcd.print(a);
      lcd.print("%");
-
      delay(1000);
      digitalWrite(pump,LOW);
-     
-
-      
-    
   }
-
-    
-
-  antares.add("Cahaya", cahaya);
-  antares.add("Kelembaban", a);  
-  antares.publish(projectName, deviceName);
-  delay(5000);
 
   
-  else {
-     lcd.setCursor(0,1);
-     lcd.print("Kelembaban : ");
-     lcd.print(a);
-     lcd.print("%");
-     delay(1000);
-     digitalWrite(pump,HIGH);
-     
-    
-  }
-    
-}
+
+
   antares.add("Cahaya", cahaya);
   antares.add("Kelembaban", a);  
   antares.publish(projectName, deviceName);
   delay(5000);
+
 }
