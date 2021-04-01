@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MONITORING SMART GARDEN</title>
+    
+    <title>Testing data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+		//script untuk mendapatkan data dari Node JS
+		$(document).ready(function(){
+			setInterval(function(){
+				$.ajax({
+					url: 'http://localhost:3000/',
+					dataType: 'json',
+					success:function(data){
+						console.log(data);
+						$("#data-ldr").text(data.cahaya); //sesuaikan variabel dengan antares
+                        $("#data-soil").text(data.lembab); //sesuaikan variabel dengan antares
+						$("#status").text("Connected"); //sesuaikan variabel dengan antares
+					},
+					error:function(data){
+						$("#data-ldr").text("Loading..."); //sesuaikan variabel dengan antares
+                        $("#data-soil").text("Loading..."); //sesuaikan variabel dengan antares
+						$("#data-status").text("Loading..."); //sesuaikan variabel dengan antares
+						$("#status").text("Not Connected"); //sesuaikan variabel dengan antares
+					}
+				});
+			},1000)
+		});
+  </script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hsil.html">Hasil Monitoring</a></li>
+                    <li><a href="">Dokumentasi</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main class="content">
+            <div class="container" style="text-align: right; margin-top: 100px">
+                <h2>Hasil Monitoring<br>SMART GARDEN</h2><br>
+            </div>
+             
+            <div class="card text-center" style="text-align: center; width: 50%">
+                <div class="card-header" style="text-align: center; font-size: 30px; font-weight: bold;">
+                    Kelembaban Tanah
+                </div>
+                <div class="card-body">
+                    <h1><span id="data-soil"> Loading... </span></h1>
+                </div>
+            </div>
+
+                <div class="card text-center" style="text-align: center; width: 50%">
+                    <div class="card-header" style="text-align: center; font-size: 30px; font-weight: bold;">
+                        Intensitas Cahaya
+                    </div>
+                    <div class="card-body">
+                        <h1><span id="data-ldr"> Loading... </span></h1>
+                    </div>
+                </div>
+            </div>
+            
+                
+        </main>
+        
+    </div>
+    
+</body>
+</html>
