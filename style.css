@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background-color: #eff1f2;
+    font-family: sans-serif;
+}
+
+.content {
+  grid-area: content;
+}
+.sidebar{
+  grid-area: sidebar;
+  background: linear-gradient(to right,rgb(94, 207, 19), rgb(26, 196, 63), rgb(12, 206, 70)) ;
+  justify-content: center;
+}
+
+.container {
+  font-size: 1.5em;
+  width:auto;
+  height: 40vh;
+  display:grid;
+  grid-template-areas: "sidebar" "content";
+  grid-template-columns: auto;
+
+}
+
+.content, .sidebar, .footer{
+  padding: 1em;
+}
+
+.card {
+  border: 5px solid #EDE868;
+  background-color:#C4F2CE;
+  margin-left: 85px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+nav li{
+  list-style: none;
+  padding: 1em 0;
+}
+
+nav li a {
+  color: #ffffff;
+  font-weight: 700;
+  opacity: 0.6;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav li a:hover {
+  opacity: 1;
+}
+.hero {
+  max-width: 90 px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero img {
+  width: 100px;
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 {
+  font-size: 2em;
+  font-weight: 300;
+  text-align: center;
+  color: #000000;
+}
+
+
+.hero p {
+  font-weight: 300;
+  line-height: 1.3em;
+  text-align: center;
+  color: #000000;
+}
+
+.action-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #EFF4E7;
+  font-weight: 700;
+  background: #09e440;
+  padding: 0.5em 2em;
+  border-radius: 60px;
+  margin: 1em 0;
+  transition: 0.3s;
+}
+
+
+@media (min-width: 1040px){
+  .container {
+      grid-template-areas:"sidebar content" "sidebar footer" ;
+      grid-template-rows: 1fr auto ;
+      grid-template-columns: 100px 1f;
+  }
+
+  nav ul{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+  }
+  .sidebar{
+      background: linear-gradient( rgb(26, 196, 63), #42a572) ;
+      padding-top: 10em;
+      width: 50%;
+      height: 66%;
+      
+  }
+  .hero{
+    text-align: left;
+    margin: 7em 0;
+}
+  .hero img {
+    width: 400px;
+    margin-top: -40px;
+    float: right;
+}
+  .hero h1{
+    font-size: 3em;
+}
+  .hero p{
+    width: 60%;
+}
+  footer ul {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1em 0;
+  }
+
+  footer ul li a img {
+      width: 20%;
+  }
+}
